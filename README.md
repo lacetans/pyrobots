@@ -1,6 +1,7 @@
 pyrobots
 ========
 Enric Mieza - Institut Lacetània Manresa
+
 January 2014
 
 Installation
@@ -10,9 +11,12 @@ Pyrobots uses python (minimum 2.7) , Qt4, Phonon and PyQt4
 Ubuntu / Debian
 ---------------
 Install packages:
- $ sudo apt-get install python-qt4 phonon python-qt4-phonon
+
+$ sudo apt-get install python-qt4 phonon python-qt4-phonon
+
 Start game:
- $ python pyrobots.py
+
+$ python pyrobots.py
 
 (will ask for file names to import the robots, you can simply press ENTER to pick up the standard examples)
 
@@ -34,17 +38,17 @@ Rules:
 
 Robot actions
 -------------
-self.accel(val) : acceleration , can be (-1, 0, +1)
-self.brake(val) : True/False
-self.turn(degrees) : direction of the robot wheels
-self.shot(degrees) : that
-TODO: defense() : shooting not enable during defense
+- self.accel(val) : acceleration , can be (-1, 0, +1)
+- self.brake(val) : True/False
+- self.turn(degrees) : direction of the robot wheels
+- self.shot(degrees) : that
+- TODO: defense() : shooting not enable during defense
 
 Robot sensors
 -------------
-self.detect_vel() : returns our speed (pixels/frame)
-self.detect_turn() : returns current angle of the wheels
-self.detect_walls() : returns an associative array (dictionary) with
+- self.detect_vel() : returns our speed (pixels/frame)
+- self.detect_turn() : returns current angle of the wheels
+- self.detect_walls() : returns an associative array (dictionary) with
     the distances to the walls in pixels
     {
         "up"  : mur superior
@@ -52,5 +56,5 @@ self.detect_walls() : returns an associative array (dictionary) with
         "left": mur esquerre
         "right": mur dret
     }
-self.detect_enemy() : angle en graus en la direcció on es troba l'enemic
-TODO: self.detect_shot()
+- self.detect_enemy() : angle en graus en la direcció on es troba l'enemic
+- TODO: self.detect_shot()

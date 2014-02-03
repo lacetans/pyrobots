@@ -1,22 +1,27 @@
 PYROBOTS
+========
 Enric Mieza - Institut Lacetània Manresa
+
 Gener 2014
 
-INSTAL·LACIÓ
+Instal·lació
 ============
 Cal instal·lar python (mínim 2.7) , Qt4, Phonon i PyQt4
----------------
+
 Ubuntu / Debian
 ---------------
 Instal·lar packages:
+
  $ sudo apt-get install python-qt4 phonon python-qt4-phonon
+
 Arrencar joc:
+
  $ python pyrobots.py
 
 (demanarà arxius a importar amb els robots, es pot agafar els exemples prement ENTER)
 
-JOC
-======
+Joc
+---
 Joc de programació. Els usuaris han de programar el seu propi robot lluitador, com es pot veure en els exemples:
 - robot1.py : el robot tendeix a fer cercles i disparar sempre que pugui
 - robot2.py : moviment més aleatori, i disparos intentant anticipar el moviment de l'altre robot
@@ -32,17 +37,17 @@ Regles:
 
 ACCIONS del robot
 -----------------
-self.accelera(val) : val ha de ser (-1, 0, +1)
-self.frena(val) : True/False
-self.gira(graus) : direcció de les rodes
-self.dispara(graus) : eso
-TODO: defensa() : no permet disparar
+- self.accelera(val) : val ha de ser (-1, 0, +1)
+- self.frena(val) : True/False
+- self.gira(graus) : direcció de les rodes
+- self.dispara(graus) : eso
+- TODO: defensa() : no permet disparar
 
 DETECCIÓ del robot
 ------------------
-self.detecta_vel() : ens torna la velocitat a la que circulem
-self.detecta_gir() : l'angle de gir actual en graus
-self.detecta_mur() : ens torna un array associatiu (diccionari) amb les
+- self.detecta_vel() : ens torna la velocitat a la que circulem
+- self.detecta_gir() : l'angle de gir actual en graus
+- self.detecta_mur() : ens torna un array associatiu (diccionari) amb les
     distàncies EN PIXELS als murs del terreny de combat
     {
         "up"  : mur superior
@@ -50,5 +55,5 @@ self.detecta_mur() : ens torna un array associatiu (diccionari) amb les
         "left": mur esquerre
         "right": mur dret
     }
-self.detecta_enemic() : angle en graus en la direcció on es troba l'enemic
-TODO: self.detecta_tret()
+- self.detecta_enemic() : angle en graus en la direcció on es troba l'enemic
+- TODO: self.detecta_tret()
