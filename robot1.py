@@ -27,14 +27,14 @@ class Robot(RobotBase):
             self.accel( 1 )
         
         # direcció
-        #self.angle += 8
-        #self.gira( self.angle )
-        murs = self.detecta_murs()
+        self.angle += 8
+        self.gira( self.angle )
+        """murs = self.detecta_murs()
         if murs["left"]<30:
             self.gira(0)
         elif murs["right"]<50:
             self.gira(180)
-        
+        """
         # apuntem i disparem a l'enemic
         angle_enemic, distancia = self.detecta_enemic()
         self.dispara( angle_enemic )

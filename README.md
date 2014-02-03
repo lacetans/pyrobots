@@ -3,7 +3,7 @@ pyrobots
 Enric Mieza - Institut Lacetània Manresa
 January 2014
 
-INSTALLATION
+Installation
 ------------
 Pyrobots uses python (minimum 2.7) , Qt4, Phonon and PyQt4
 
@@ -32,7 +32,7 @@ Rules:
 - Bumping the walls decrements 1 life point and leaves you on tilt during 3 rounds.
 - Only 4 shots can be displayed in the screen.
 
-ROBOT ACTIONS
+Robot actions
 -------------
 self.accel(val) : acceleration , can be (-1, 0, +1)
 self.brake(val) : True/False
@@ -40,7 +40,7 @@ self.turn(degrees) : direction of the robot wheels
 self.shot(degrees) : that
 TODO: defense() : shooting not enable during defense
 
-ROBOT SENSORS
+Robot sensors
 -------------
 self.detect_vel() : returns our speed (pixels/frame)
 self.detect_turn() : returns current angle of the wheels
