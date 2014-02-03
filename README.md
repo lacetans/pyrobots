@@ -1,13 +1,12 @@
 pyrobots
 ========
-PYROBOTS
 Enric Mieza - Institut Lacetània Manresa
 January 2014
 
 INSTALLATION
-============
+------------
 Pyrobots uses python (minimum 2.7) , Qt4, Phonon and PyQt4
----------------
+
 Ubuntu / Debian
 ---------------
 Install packages:
@@ -17,8 +16,8 @@ Start game:
 
 (will ask for file names to import the robots, you can simply press ENTER to pick up the standard examples)
 
-GAME
-======
+Game
+----
 Programming game. The users have to program their own fighting robot, as in the examples:
 - robot1.py : the robot moves in circles and shot every time it can.
 - robot2.py : randomized movement, and shots trying to anticipate the moves of the opponent.
@@ -34,7 +33,7 @@ Rules:
 - Only 4 shots can be displayed in the screen.
 
 ROBOT ACTIONS
-=============
+-------------
 self.accel(val) : acceleration , can be (-1, 0, +1)
 self.brake(val) : True/False
 self.turn(degrees) : direction of the robot wheels
@@ -42,7 +41,7 @@ self.shot(degrees) : that
 TODO: defense() : shooting not enable during defense
 
 ROBOT SENSORS
-=============
+-------------
 self.detect_vel() : returns our speed (pixels/frame)
 self.detect_turn() : returns current angle of the wheels
 self.detect_walls() : returns an associative array (dictionary) with
