@@ -1,0 +1,18 @@
+TODO list
+=========
+
+* xoc entre robots (+tilt)
+* sons a carpeta sounds
+* imatges a carpeta images
+* trets per temps, no per limits de pantalla
+* detecta trets
+* defensa (no permet disparar)
+
+coordenades relatives sempre
+* detecta_enemic respecte a la meva direcció, no respecte eixos absoluts
+* detecta_murs ha de retornar distància murs segons meva direcció
+* detecte_angle no té sentit que existeixi
+* gira va per increments
+* dispara : l'angle en posició relativa a la meva direcció actual
+* recomanació: primer dispara i dp avança per assegurar coherència de les coordenades i angles
+ 
