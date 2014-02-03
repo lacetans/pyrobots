@@ -3,51 +3,52 @@
 """
 PYROBOTS
 Enric Mieza - Institut Lacetània
-Gener 2014
+Janury 2014
+
+English version
 """
 
 from pyrobots import RobotBase
 import random
 
 class Robot(RobotBase):
-    name = "atontao"
+    name = "fool"
     author = "enric"
-    compt = 0
-    ultim_angle_enemic = 0
-    ultima_dist_enemic = 1
+    rounds = 0
+    last_enemy_angle = 0
+    last_enemy_distance = 1
 
     def round(self):
-        # actualitzem comptador de torns
-        self.compt += 1
+        # update round counter
+        self.rounds += 1
         
-        # cada 5 torns canviem de direcció aleatòriament
-        if self.compt%6==0:
-            self.gira( self.detecta_angle() + random.randint(-10,+50) )
+        # every 6 rounds change robot direction randomly
+        if self.rounds%6==0:
+            self.turn( self.detect_angle() + random.randint(-10,+50) )
         
-        # vigilem de no estrellar-nos
-        murs = self.detecta_murs()
-        dmin = min( murs.values() )
-        # si ens acostem massa al mur (distància mínima)
+        # take care for not to crash
+        walls = self.detect_walls()
+        dmin = min( walls.values() )
         if dmin < 50:
-            if murs["up"]==dmin:
-                self.gira( 90 )
-            elif murs["down"]==dmin:
-                self.gira( -90 )
-            elif murs["left"]==dmin:
-                self.gira( 0 )
-            elif murs["right"]==dmin:
-                self.gira( 180 )
+            if walls["up"]==dmin:
+                self.turn( 90 )
+            elif walls["down"]==dmin:
+                self.turn( -90 )
+            elif walls["left"]==dmin:
+                self.turn( 0 )
+            elif walls["right"]==dmin:
+                self.turn( 180 )
             else:
-                print "ERROR gir robot2"
+                print "ERROR turning robot2"
         
-        # accelerem aleatòriament
+        # random acceleration
         self.accel( random.randint(0,1) )
         
         # apuntem i disparem a l'enemic
-        angle , distancia = self.detecta_enemic()
-        inc = angle - self.ultim_angle_enemic
+        angle , distance = self.detect_enemy()
+        inc = angle - self.last_enemy_angle
 
-        self.dispara(angle+2*inc)
-        self.dispara(angle)
+        self.shot(angle+2*inc)
+        self.shot(angle)
         
-        self.ultim_angle_enemic = angle
+        self.last_enemy_angle = angle

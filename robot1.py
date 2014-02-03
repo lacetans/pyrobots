@@ -4,6 +4,8 @@
 PYROBOTS
 Enric Mieza - Institut Lacetània
 Gener 2014
+
+Versió en català
 """
 
 from pyrobots import RobotBase, Game
