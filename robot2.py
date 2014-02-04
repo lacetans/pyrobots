@@ -8,15 +8,16 @@ Janury 2014
 English version
 """
 
-from pyrobots import RobotBase
+from pyrobots import RobotBase, Shot
 import random
+from math import sin, cos, tan, atan, pi
 
 class Robot(RobotBase):
     name = "fool"
     author = "enric"
     rounds = 0
-    last_enemy_angle = 0
-    last_enemy_distance = 1
+    last_angle = 0
+    last_dist = 1
 
     def round(self):
         # update round counter
@@ -42,13 +43,55 @@ class Robot(RobotBase):
                 print "ERROR turning robot2"
         
         # random acceleration
-        self.accel( random.randint(0,1) )
+        #self.accel( random.randint(0,1) )
         
-        # apuntem i disparem a l'enemic
+        # calculate enemy equation y = ax + b
         angle , distance = self.detect_enemy()
-        inc = angle - self.last_enemy_angle
-
-        self.shot(angle+2*inc)
-        self.shot(angle)
+        angle_rad = 2*pi*angle/360.0
+        alpha = self.last_angle - angle
+        alphar = 2*pi*alpha/360.0
+        ix = distance * sin( alphar )
+        iy = self.last_dist*cos( alphar ) - distance
+        a = iy / ix
+        b = self.last_dist
         
-        self.last_enemy_angle = angle
+        # angles alpha and beta in radians
+        def fun( a, b, d1, d2, alpha, beta, vel):
+            # i*j -k
+            i = b / (atan(beta) - a)
+            j = ( 1 / (d1*sin(alpha)) ) - ( 1 / (vel*cos(beta)) )
+            k = d1 / (d2*sin(alpha))
+            return i*j-k
+        
+        res = []
+        bs = []
+        for i in range(-10,10):
+            beta = i/10.0*pi/2
+            bs.append(beta)
+            f = fun( a, b, self.last_dist, distance, alphar, beta, Shot.vel )
+            res.append( abs(f) )
+        #print res
+        #print bs
+        
+        rmin = min(res)
+        index = res.index(rmin)
+        shot_angle_rad = (index-10.0)/10.0*pi/2
+        
+        print rmin,index,shot_angle_rad
+        
+        # rectify direction
+        #if cos(shot_angle_rad) * cos(angle_rad) < 0:
+        #    shot_angle_rad += pi
+        
+        # we've got it! shot!
+        self.shot(360.0*shot_angle_rad/(2*pi))
+        #self.shot(shot_angle+180)
+        
+        # keep values for later calculations
+        self.last_angle = angle
+        self.last_dist = distance
+
+
+
+
+

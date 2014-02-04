@@ -241,6 +241,8 @@ class RobotBase(QtCore.QObject):
         # angle > 180º
         if ix<0:
             angle += math.pi
+        # normalize
+        if angle<0: angle += math.pi*2
         # distance
         dist = math.sqrt(ix**2+iy**2)
         # return angle from robot1 or 2
